@@ -62,7 +62,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${gloock.variable} ${archivo.variable}`}>
       <head>
-        <link rel="preload" href="/media/hero-poster-1920.webp" as="image" type="image/webp" fetchPriority="high" />
+        <link rel="preload" href="/media/hero-v2-poster-1920.webp" as="image" type="image/webp" fetchPriority="high" />
       </head>
       <body>{children}</body>
     </html>

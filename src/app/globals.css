@@ -185,7 +185,7 @@ a { color: inherit; }
   position: absolute; left: 0; right: 0; top: -6%; height: 118%;
   z-index: -3;
   will-change: transform;
-  background: var(--ink) url("/media/hero-poster-1920.webp") center / cover no-repeat;
+  background: var(--ink) url("/media/hero-v2-poster-1920.webp") center / cover no-repeat;
 }
 .hero-media video {
   width: 100%; height: 100%;

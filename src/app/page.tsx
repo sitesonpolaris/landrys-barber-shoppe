@@ -39,7 +39,7 @@ const JSON_LD = JSON.stringify({
 
 // React doesn't serialize `muted` in server HTML, and iOS only autoplays videos
 // that are muted in the initial markup — so the hero video is emitted as raw HTML.
-const HERO_VIDEO = `<video class="hero-video" autoplay muted loop playsinline preload="auto" poster="/media/hero-poster-1920.webp" aria-hidden="true" tabindex="-1" disablepictureinpicture disableremoteplayback><source src="/media/hero-720.mp4" type="video/mp4" media="(max-width: 900px)"><source src="/media/hero-1080.mp4" type="video/mp4"></video>`;
+const HERO_VIDEO = `<video class="hero-video" autoplay muted loop playsinline preload="auto" poster="/media/hero-v2-poster-1920.webp" aria-hidden="true" tabindex="-1" disablepictureinpicture disableremoteplayback><source src="/media/hero-v2-720.mp4" type="video/mp4" media="(max-width: 900px)"><source src="/media/hero-v2-1080.mp4" type="video/mp4"></video>`;
 
 // Cached so the page stays fully prerendered; refreshes when the cache revalidates.
 async function CopyrightYear() {
