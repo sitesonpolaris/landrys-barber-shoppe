@@ -320,6 +320,17 @@ export default function Home() {
         <div className="wrap footer-legal">
           <span>© <CopyrightYear /> {BUSINESS.name} · {BUSINESS.city}</span>
           <span>Tue–Fri 10 AM – 7 PM</span>
+           <span>
+    Designed by{' '}
+    <a
+      href="https://www.sitesonpolaris.com"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="hover:text-white/70 transition"
+    >
+      Sites on Polaris
+    </a>
+  </span>
         </div>
       </footer>
 
