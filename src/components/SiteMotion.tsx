@@ -35,8 +35,13 @@ export function SiteMotion() {
     document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
 
     const video = document.querySelector<HTMLVideoElement>(".hero-video");
+    const toggle = document.querySelector<HTMLButtonElement>(".hero-toggle");
+    // Visitor-controlled pause (WCAG 2.2.2). Starts paused under reduced motion.
+    let userPaused = reduce.matches;
+    const syncToggle = () => toggle?.setAttribute("aria-pressed", String(userPaused));
+    syncToggle();
     const tryPlay = () => {
-      if (!video || reduce.matches) return;
+      if (!video || reduce.matches || userPaused) return;
       video.muted = true;
       video.play()?.catch(() => {});
     };
@@ -50,6 +55,17 @@ export function SiteMotion() {
       else video.pause();
     });
     if (video) vio.observe(video);
+    const onToggle = () => {
+      if (!video) return;
+      userPaused = !userPaused;
+      syncToggle();
+      if (userPaused) video.pause();
+      else {
+        video.muted = true;
+        video.play()?.catch(() => {});
+      }
+    };
+    toggle?.addEventListener("click", onToggle);
 
     const layers = Array.from(document.querySelectorAll<HTMLElement>("[data-speed]")).map((el) => ({
       el,
@@ -89,6 +105,8 @@ export function SiteMotion() {
     window.addEventListener("resize", onScroll, { passive: true });
     const onReduce = () => {
       if (reduce.matches) {
+        userPaused = true;
+        syncToggle();
         layers.forEach((l) => {
           l.el.style.transform = "";
           l.el.style.opacity = "";
@@ -104,6 +122,7 @@ export function SiteMotion() {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
       reduce.removeEventListener("change", onReduce);
+      toggle?.removeEventListener("click", onToggle);
       io.disconnect();
       vio.disconnect();
     };

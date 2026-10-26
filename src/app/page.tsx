@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react";
 import Image from "next/image";
-import { Badge, Stars } from "@/components/Badge";
+import { Stars } from "@/components/Badge";
 import { CalIcon, CheckIcon, PhoneIcon, PinIcon } from "@/components/Icons";
 import { MenuList } from "@/components/MenuList";
 import { SiteMotion } from "@/components/SiteMotion";
@@ -39,7 +39,7 @@ const JSON_LD = JSON.stringify({
 
 // React doesn't serialize `muted` in server HTML, and iOS only autoplays videos
 // that are muted in the initial markup — so the hero video is emitted as raw HTML.
-const HERO_VIDEO = `<video class="hero-video" autoplay muted loop playsinline preload="auto" poster="/media/hero-poster-1920.webp" aria-hidden="true" tabindex="-1" disablepictureinpicture disableremoteplayback><source src="/media/hero-720.mp4" type="video/mp4" media="(max-width: 900px)"><source src="/media/hero-1080.mp4" type="video/mp4"></video>`;
+const HERO_VIDEO = `<video class="hero-video" autoplay muted loop playsinline preload="auto" poster="/media/hero-poster-1920-v2.webp" aria-hidden="true" tabindex="-1" disablepictureinpicture disableremoteplayback><source src="/media/hero-720-v2.mp4" type="video/mp4" media="(max-width: 860px)"><source src="/media/hero-1080-v2.mp4" type="video/mp4"></video>`;
 
 // Cached so the page stays fully prerendered; refreshes when the cache revalidates.
 async function CopyrightYear() {
@@ -61,7 +61,7 @@ export default function Home() {
       <header className="site-header">
         <div className="wrap">
           <a className="brand" href="#top" aria-label="Landry’s Barber Shoppe, back to top">
-            <Badge className="brand-badge" uid="h" />
+            <Image className="brand-badge" src="/brand/logo-badge-256.webp" width={256} height={256} sizes="52px" alt="" priority />
             <span className="brand-name">
               <b>{BUSINESS.shortName}</b>
               <span>{BUSINESS.tagline}</span>
@@ -116,6 +116,10 @@ export default function Home() {
               </div>
             </div>
           </div>
+          <button type="button" className="hero-toggle" aria-pressed="false" aria-label="Pause background video">
+            <svg className="i-pause" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="6.5" y="5" width="3.5" height="14" rx="1" /><rect x="14" y="5" width="3.5" height="14" rx="1" /></svg>
+            <svg className="i-play" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.2-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z" /></svg>
+          </button>
           <span className="scroll-cue" aria-hidden="true" />
         </section>
 
@@ -144,20 +148,20 @@ export default function Home() {
               <p className="collage-word" data-speed="0.18" aria-hidden="true">Gastonia</p>
               <figure className="c-main" data-speed="0.05">
                 <Image
-                  src="/media/kids-896.webp"
+                  src="/media/kids-896-v2.webp"
                   width={896}
                   height={1120}
                   sizes="(max-width: 860px) 70vw, 36vw"
-                  alt="A child’s sneakers dangling from a green leather barber chair with a booster seat"
+                  alt="A smiling boy in a booster seat checks out his fresh fade while his barber holds up a hand mirror"
                 />
               </figure>
               <figure className="c-small" data-speed="-0.14">
                 <Image
-                  src="/media/tools-896.webp"
+                  src="/media/tools-896-v2.webp"
                   width={896}
                   height={1120}
                   sizes="(max-width: 860px) 45vw, 22vw"
-                  alt="Straight razor, shaving brush, comb and tonic bottle on a green barber towel"
+                  alt="Gold clippers, a trimmer, comb, neck duster and straight razor on a black-and-gold station"
                 />
               </figure>
             </div>
@@ -182,11 +186,11 @@ export default function Home() {
               <div className="services-aside">
                 <figure data-speed="-0.1">
                   <Image
-                    src="/media/razor-896.webp"
+                    src="/media/razor-896-v2.webp"
                     width={896}
                     height={1120}
                     sizes="24vw"
-                    alt="A barber shaping a lathered beard line with a straight razor"
+                    alt="A barber crisping a client’s hairline with a straight razor"
                   />
                 </figure>
                 <p className="services-note">
@@ -282,7 +286,7 @@ export default function Home() {
         <div className="wrap footer-base">
           <div>
             <a className="brand" href="#top" aria-label="Landry’s Barber Shoppe, back to top">
-              <Badge className="brand-badge" uid="f" />
+              <Image className="brand-badge brand-badge--lg" src="/brand/logo-badge-256.webp" width={256} height={256} sizes="104px" alt="" />
               <span className="brand-name">
                 <b>{BUSINESS.shortName}</b>
                 <span>{BUSINESS.tagline}</span>

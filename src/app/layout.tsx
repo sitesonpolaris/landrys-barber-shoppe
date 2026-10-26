@@ -44,8 +44,9 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
       { url: "/icons/icon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/icons/icon-48.png", sizes: "48x48", type: "image/png" },
+      { url: "/icons/icon-192.png", sizes: "192x192", type: "image/png" },
     ],
     apple: "/icons/apple-touch-icon.png",
   },
@@ -62,7 +63,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${gloock.variable} ${archivo.variable}`}>
       <head>
-        <link rel="preload" href="/media/hero-poster-1920.webp" as="image" type="image/webp" fetchPriority="high" />
+        <link rel="preload" href="/media/hero-poster-1920-v2.webp" as="image" type="image/webp" fetchPriority="high" />
       </head>
       <body>{children}</body>
     </html>
